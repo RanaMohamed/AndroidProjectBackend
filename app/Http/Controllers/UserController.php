@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -34,17 +35,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
-        $object = json_decode($request['user']);
-
-        if((User::where('fbid', '=', $object->id)->first()) == null){
             $user = new User();
-            $user->name = $object->name;
-            $user->fbid = $object->id;
+            $user->name = $request['first_name'];
+            $user->email = $request['last_name'];
+            $user->fb_id = $request['id'];
+            $user->password = "123456";
             $user->save();
-        }
-
-        return 'true';
+        return $user;
     }
 
     /**
