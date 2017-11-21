@@ -35,12 +35,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::where('fb_id', $request['id'])->first();
+        if ($user == null) {
             $user = new User();
-            $user->name = $request['first_name'];
-            $user->email = $request['last_name'];
+            $user->first_name = $request['first_name'];
+            $user->last_name = $request['last_name'];
             $user->fb_id = $request['id'];
-            $user->password = "123456";
+            /*$user->password = "123456";*/
+            $user->gender = $request['gender'];
             $user->save();
+        }
         return $user;
     }
 
@@ -50,9 +54,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return User::all();
     }
 
     /**
@@ -73,9 +77,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::where('id', $request['id'])->first();
+        $user->type = $request['type'];
+        $user->thing = $request['thing'];
+        $user -> update();
+        return $user;
     }
 
     /**

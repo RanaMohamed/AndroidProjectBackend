@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/User' ,'UserController');
+/*Route::resource('/User' ,'UserController');*/
+
+Route::post('User/store' , ['uses' => 'UserController@store']);
+Route::post('User/update', [ 'uses' => 'UserController@update']);
+Route::post('Users', ['uses' => 'UserController@show']);
