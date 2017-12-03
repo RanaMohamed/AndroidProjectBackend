@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('fb_id' , 100)->unique();
             $table->string('type')->nullable();
             $table->string('thing')->nullable();
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
+            $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

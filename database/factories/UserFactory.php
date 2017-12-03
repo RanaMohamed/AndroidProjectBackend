@@ -23,5 +23,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'type' => $faker->randomElement($array = array("0" , "1")),
         'thing' => $faker->word,
         'remember_token' => str_random(10),
+        'lat' => $faker->latitude,
+        'lng' => $faker->longitude,
+        'phone' => $faker->phoneNumber
     ];
 });

@@ -82,6 +82,9 @@ class UserController extends Controller
         $user = User::where('id', $request['id'])->first();
         $user->type = $request['type'];
         $user->thing = $request['thing'];
+        $user->lat = $request['lat'];
+        $user->lng = $request['lng'];
+        $user->phone = $request['phone'];
         $user -> update();
         return $user;
     }
